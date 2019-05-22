@@ -1,0 +1,24 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "This app takes users' answers to survey questions, and find the friend with the greatest compatibility",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sewon-park/friendfinder.git"
+  },
+  "author": "se won park",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sewon-park/friendfinder/issues"
+  },
+  "homepage": "https://github.com/sewon-park/friendfinder#readme",
+  "dependencies": {
+    "express": "^4.17.0",
+    "path": "^0.12.7"
+  }
+}
