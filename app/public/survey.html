@@ -8,11 +8,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
 
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-
+ 
 </head>
 
 <body>
@@ -256,8 +254,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <h2 id="match-name">Name</h2>
-          <div id="match-photo"> </div>
+          <h2 id="match-name"></h2>
+          <img id="match-photo" src="" alt="Image Not Found" style="max-width: 350px;">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -267,11 +265,16 @@
     </div>
   </div>
 
-</body>
 
-</html>
+    <!-- JavaScript for Submission Logic -->
+    
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript">
+<script>
+
   $("#submit").on("click", function (event) {
     var newFriend = {
       "name": $("#name").val().trim(),
@@ -293,12 +296,14 @@
 
 
     $.post("/api/friendsData", newFriend,
-      function (friendsData) {
+      function (data) {
 
-        // If a table is available... tell user they are booked.
-        if (friendsData) {
+        
+        if (data) {
           alert("yay");
-
+          $('#match-name').text(data.name);
+          $('#match-photo').attr('src', data.photo);
+          $("#result-modal").modal('toggle');
         }
 
         // If a table is available... tell user they on the waiting list.
@@ -323,50 +328,14 @@
       });
 
     //
-    // $("#match-name").text(friendsData.name);
-    // $("#match-photo").attr("src", friendsData.photo);
-    // $("#result-modal").modal("toggle");
+   
 
   });
 
-  //Calculate survey answer difference
-  function answerDiff() {
-    $.ajax({ url: "/api/friendsData", method: "GET" })
-      .then(function (friendsData, newFriend) {
-
-        // Here we then log the tableData to console, where it will show up as an object.
-        console.log(friendsData);
-        console.log("------------------------------------");
-
-        var scoreDiffArray = [];
-
-        for (var i = 0; i < friendsData.length; i++) {
-
-          var childFriendsData = friendsData[i];
-
-          for (var j = 0; j < childFriendsData.scores.length; j++){
-            var absDiff = Math.abs(parseInt(childFriendsData.scores[j]) - parseInt(newFriend.scores[j]));
-            var absDiffSum = 0;
-            absDiffSum += absDiff;
-            
-          }
-          
-          console.log(absDiffSum);
-          scoreDiffArray.push(absDiffSum);
-          
-        }
-        console.log(scoreDiffArray)
-
-        let x = arr.indexOf(Math.max(scoreDiffArray));
-        console.log(x);
-
-        
-
-
-
-  })
-}
-
-answerDiff();
+ 
 
 </script>
+
+</body>
+
+</html>

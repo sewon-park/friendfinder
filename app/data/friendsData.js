@@ -1,7 +1,7 @@
-var friendsArray = [
+var friendsData = [
   {
     "name":"Hawkeye",
-    "photo":"https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjnsojQn67iAhVH-lQKHROwCMMQjRx6BAgBEAU&url=https%3A%2F%2Fwww.radiotimes.com%2Fnews%2F2016-07-30%2Fjeremy-renner-was-so-frustrated-by-the-first-avengers-film-that-he-wanted-to-be-killed-off%2F&psig=AOvVaw2H8h41hcn5vQyPQypABzNh&ust=1558583900543227",
+    "photo":"https://i.kinja-img.com/gawker-media/image/upload/s--qFwf2Dk4--/c_scale,f_auto,fl_progressive,q_80,w_800/e4u1njnr4shj3qoz4ncy.jpg",
     "scores":[
         1,
         2,
@@ -17,7 +17,7 @@ var friendsArray = [
   },
   {
     "name":"Natalia Alianovna Romanova",
-    "photo":"https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjYtci1oK7iAhWHwFQKHbmNC6EQjRx6BAgBEAU&url=https%3A%2F%2Fmarvel-filme.fandom.com%2Fde%2Fwiki%2FBlack_Widow&psig=AOvVaw3BGvkaa2ah2kmk4PYlGd1H&ust=1558584114232674",
+    "photo":"https://am22.akamaized.net/tms/cnt/uploads/2018/05/black-widow-scarlett-johansson-marvel-the-avengers.jpg",
     "scores":[
         2,
         3,
@@ -35,4 +35,4 @@ var friendsArray = [
 ];
 
 
-module.exports = friendsArray;
+module.exports = friendsData;
