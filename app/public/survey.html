@@ -10,7 +10,7 @@
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="styles.css"> -->
 
- 
+
 </head>
 
 <body>
@@ -41,7 +41,7 @@
       <div class="question">
         <p>You enjoy vibrant social events with lots of people.</p>
       </div>
-      <select id="q1">
+      <select class="form-control" id="q1">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -60,7 +60,7 @@
       <div class="question">
         <p>You often spend time exploring unrealistic yet intriguing ideas.</p>
       </div>
-      <select id="q2">
+      <select class="form-control" id="q2">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -80,7 +80,7 @@
       <div class="question">
         <p>Your travel plans are more likely to look like a rough list of ideas than a detailed itinerary.</p>
       </div>
-      <select id="q3">
+      <select class="form-control" id="q3">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -100,7 +100,7 @@
       <div class="question">
         <p> You often think about what you should have said in a conversation long after it has taken place.</p>
       </div>
-      <select id="q4">
+      <select class="form-control" id="q4">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -121,7 +121,7 @@
         <p> If your friend is sad about something, your first instinct is to support them emotionally, not try to solve
           their problem.</p>
       </div>
-      <select id="q5">
+      <select class="form-control" id="q5">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -141,7 +141,7 @@
       <div class="question">
         <p>People can rarely upset you.</p>
       </div>
-      <select id="q6">
+      <select class="form-control" id="q6">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -161,7 +161,7 @@
       <div class="question">
         <p>You often rely on other people to be the ones to start a conversation and keep it going.</p>
       </div>
-      <select id="q7">
+      <select class="form-control" id="q7">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -181,7 +181,7 @@
         <p>If you have to temporarily put your plans on hold, you make sure it is your top priority to get back on track
           as soon as possible.</p>
       </div>
-      <select id="q8">
+      <select class="form-control" id="q8">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -201,7 +201,7 @@
       <div class="question">
         <p>You rarely worry if you made a good impression on someone you met.</p>
       </div>
-      <select id="q9">
+      <select class="form-control" id="q9">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -221,7 +221,7 @@
       <div class="question">
         <p>It would be a challenge for you to spend the whole weekend all by yourself without feeling bored.</p>
       </div>
-      <select id="q10">
+      <select class="form-control" id="q10">
         <option selected disabled hidden>Select an option</option>
         <option value="1">1 Strongly disagree</option>
         <option value="2">2</option>
@@ -266,50 +266,52 @@
   </div>
 
 
-    <!-- JavaScript for Submission Logic -->
-    
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- JavaScript for Submission Logic -->
 
-<script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 
-  $("#submit").on("click", function (event) {
-    var newFriend = {
-      "name": $("#name").val().trim(),
-      "photo": $("#photoLink").val().trim(),
-      "scores": [
-        $('#q1').val(),
-        $('#q2').val(),
-        $('#q3').val(),
-        $('#q4').val(),
-        $('#q5').val(),
-        $('#q6').val(),
-        $('#q7').val(),
-        $('#q8').val(),
-        $('#q9').val(),
-        $('#q10').val()
-      ]
-    }
-    console.log(newFriend);
+  <script>
+    $("#submit").on("click", function (event) {
+      function validateForm() {
+        var isValid = true;
+        $('.form-control').each(function () {
+          if ($(this).val() === '') {
+            isValid = false;
+          }
+        });
+        return isValid;
+      }
 
-
-    $.post("/api/friendsData", newFriend,
-      function (data) {
-
-        
-        if (data) {
-          alert("yay");
-          $('#match-name').text(data.name);
-          $('#match-photo').attr('src', data.photo);
-          $("#result-modal").modal('toggle');
+      if (validateForm() == true) {
+        var newFriend = {
+          "name": $("#name").val().trim(),
+          "photo": $("#photoLink").val().trim(),
+          "scores": [
+            $('#q1').val(),
+            $('#q2').val(),
+            $('#q3').val(),
+            $('#q4').val(),
+            $('#q5').val(),
+            $('#q6').val(),
+            $('#q7').val(),
+            $('#q8').val(),
+            $('#q9').val(),
+            $('#q10').val()
+          ]
         }
-
+        console.log(newFriend);
+        $.post("/api/friendsData", newFriend,
+          function (data) {
+            $('#match-name').text(data.name);
+            $('#match-photo').attr('src', data.photo);
+            $("#result-modal").modal('toggle');
+          });
         // If a table is available... tell user they on the waiting list.
-        else {
-          alert("Sorry something went wrong");
-        }
 
         // Clear the form when submitting
         $("#name").val("");
@@ -324,17 +326,18 @@ crossorigin="anonymous"></script>
         $("#q8").val("Select an option");
         $("#q9").val("Select an option");
         $("#q10").val("Select an option");
+      }
+      else {
+        alert("Please fill out ALL fields before submitting survey!")
+      }
 
-      });
 
-    //
-   
+    });
 
-  });
 
- 
 
-</script>
+
+  </script>
 
 </body>
 
